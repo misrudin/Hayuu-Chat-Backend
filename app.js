@@ -22,6 +22,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/uploads", express.static("./uploads"));
 
-app.use("/api/v1", router);
+app.use("/aio/v1", router);
 
 app.listen(port, () => console.log(`App running Listen port ${port}`));
