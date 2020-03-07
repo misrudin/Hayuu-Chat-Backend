@@ -42,7 +42,7 @@ module.exports = {
           })
           .catch(err => {
             helpers.response(res, {}, 201, err);
-            console.log(err);
+            // console.log(err);
           });
       });
     });
