@@ -18,7 +18,7 @@ module.exports = {
   },
 
   register: (req, res) => {
-    const { name, address, gender, email, password, lat, lng } = req.body;
+    const { name, address, gender, email, password } = req.body;
     bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(password, salt, function(err, hash) {
         const data = {
@@ -26,9 +26,7 @@ module.exports = {
           address,
           gender,
           email,
-          password: hash,
-          lat,
-          lng,
+          password: hash,     
           image: process.env.URL_IMG + `uploads/${req.file.filename}`
         };
         userModel
