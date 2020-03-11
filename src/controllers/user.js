@@ -17,16 +17,37 @@ module.exports = {
       });
   },
 
-  register: (req, res) => {
-    const { name, address, gender, email, password } = req.body;
-    bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(password, salt, function(err, hash) {
-        const data = {
-          name,
-          address,
-          gender,
-          email,
-          password: hash,     
+  // register: (req, res) => {
+  //   const { name, address, gender, email, password } = req.body;
+  //   bcrypt.genSalt(10, function(err, salt) {
+  //     bcrypt.hash(password, salt, function(err, hash) {
+  //       const data = {
+  //         name,
+  //         address,
+  //         gender,
+  //         email,
+  //         password: hash,     
+  //         image: process.env.URL_IMG + `uploads/${req.file.filename}`
+  //       };
+  //       userModel
+  //         .register(data)
+  //         .then(result => {
+  //           const response = {
+  //             id: result.insertId,
+  //             ...data
+  //           };
+  //           helpers.response(res, response, 200);
+  //         })
+  //         .catch(err => {
+  //           helpers.response(res, {}, 201, err);
+  //           // console.log(err);
+  //         });
+  //     });
+  //   });
+  // },
+
+register: (req, res) => {      
+        const data = {     
           image: process.env.URL_IMG + `uploads/${req.file.filename}`
         };
         userModel
@@ -40,10 +61,7 @@ module.exports = {
           })
           .catch(err => {
             helpers.response(res, {}, 201, err);
-            // console.log(err);
-          });
       });
-    });
   },
 
   login: (req, res) => {
